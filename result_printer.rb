@@ -6,6 +6,8 @@ class ResultPrinter
 
     puts "Ошибки (#{game.errors}): #{game.bad_letters.join(", ")}"
 
+    print_viselitsa(game.errors)
+
     if game.errors >= 7
       puts "Вы проиграли"
     else
@@ -33,6 +35,104 @@ class ResultPrinter
 
   def cls
     system "clear" or system "cls"
+  end
+
+  def print_viselitsa(errors)
+    case errors
+      when 0
+        puts "
+       __________
+       |/
+       |
+       |
+       |
+       |
+   ____|_________
+   |            |"
+#насрисовать пустую виселицу
+      when 1
+        # +1 ошибка
+        puts "
+        __________
+        |/     ( )
+       |
+       |
+       |
+       |
+   ____|_________
+   |            |"
+
+      when 2
+        puts "
+       __________
+       |/     ( )
+       |       |
+       |
+       |
+       |
+   ____|_________
+   |            |"
+
+      when 3
+
+        puts "
+       __________
+       |/     ( )
+       |     __|__
+       |
+       |
+       |
+   ____|_________
+   |            |"
+
+      when 4
+
+        puts "
+       __________
+       |/     ( )
+       |     __|__
+       |    /
+       |
+       |
+   ____|_________
+   |            |"
+
+      when 5
+
+        puts "
+       __________
+       |/     ( )
+       |     __|__
+       |    /  |   \
+       |
+       |
+   ____|_________
+   |            |"
+
+      when 6
+
+        puts "
+        __________
+       |/     ( )
+       |     __|__
+       |    /  |   \
+       |   /   |    \
+       |
+   ____|_________
+   |            |"
+
+      when 7
+
+        puts "
+        __________
+       |/     ( )
+       |     __|__
+       |    /  |   \
+       |   /  _|_    \
+       |     |   |
+   ____|_____|___|
+   |            |"
+    end
   end
 
 end
