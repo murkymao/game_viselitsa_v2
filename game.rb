@@ -64,5 +64,25 @@ class Game
     end
   end
 
+  def letters
+    return @letters
+  end
+
+  def good_letters
+    return @good_letters
+  end
+
+  def bad_letters
+    return @bad_letters
+  end
+
+  def status
+    return @status
+  end
+
+  def errors
+    return @errors
+  end
+
 end
 
