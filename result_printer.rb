@@ -1,5 +1,26 @@
 class ResultPrinter
 
+  def initialize
+    @status_image = []
+
+    current_path = File.dirname(__FILE__)
+    counter = 0
+
+    while counter <= 7 do
+      file_name = current_path + '/image/#{counter}.txt'
+
+      if File.exist?(file_name)
+        f = File.new(file_name, "r:UTF-8")
+        @status_image << f.read
+        f.close
+      else
+        @status_image << "\n[ Изображение не найдено ]\n"
+      end
+
+      counter += 1
+    end
+  end
+
   def print_status(game)
     cls
     puts "\nСлово:" + get_word_for_print(game.letters, game.good_letters)
@@ -38,101 +59,7 @@ class ResultPrinter
   end
 
   def print_viselitsa(errors)
-    case errors
-      when 0
-        puts "
-       __________
-       |/
-       |
-       |
-       |
-       |
-   ____|_________
-   |            |"
-#насрисовать пустую виселицу
-      when 1
-        # +1 ошибка
-        puts "
-        __________
-        |/     ( )
-       |
-       |
-       |
-       |
-   ____|_________
-   |            |"
-
-      when 2
-        puts "
-       __________
-       |/     ( )
-       |       |
-       |
-       |
-       |
-   ____|_________
-   |            |"
-
-      when 3
-
-        puts "
-       __________
-       |/     ( )
-       |     __|__
-       |
-       |
-       |
-   ____|_________
-   |            |"
-
-      when 4
-
-        puts "
-       __________
-       |/     ( )
-       |     __|__
-       |    /
-       |
-       |
-   ____|_________
-   |            |"
-
-      when 5
-
-        puts "
-       __________
-       |/     ( )
-       |     __|__
-       |    /  |   \
-       |
-       |
-   ____|_________
-   |            |"
-
-      when 6
-
-        puts "
-        __________
-       |/     ( )
-       |     __|__
-       |    /  |   \
-       |   /   |    \
-       |
-   ____|_________
-   |            |"
-
-      when 7
-
-        puts "
-        __________
-       |/     ( )
-       |     __|__
-       |    /  |   \
-       |   /  _|_    \
-       |     |   |
-   ____|_____|___|
-   |            |"
-    end
+     puts @status_image[errors]
   end
 
 end

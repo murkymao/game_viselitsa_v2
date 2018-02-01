@@ -1,13 +1,14 @@
-require './game.rb'
-require './result_printer.rb'
+current_path = "./" + File.dirname(__FILE__) # всегда возвращает папку в которой лежит ДАННАЯ прграмма
+
+
+require current_path + "/game.rb"
+require current_path + "/result_printer.rb"
 
 printer = ResultPrinter.new
 
-slovo = ARGV[0]
+reader = WordReader.new
 
-if (Gem.win_platform? && ARGV[0])
-  slovo = slovo.encode(ARGV[0].encoding, "cp1251").encode("UTF-8")
-end
+slovo = reader.read_from_file(current_path + '/data/words.txt')
 
 game = Game.new(slovo)
 
